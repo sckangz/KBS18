@@ -67,7 +67,7 @@ for x = 1:maxIter
         for b = 1:m
             M(a,b) = trace( K(:,:,a)*K(:,:,b));
         end
-        A(a)= 0.5*gamma*trace( D*K(:,:,a));
+        A(a)= 2*gamma*trace( D*K(:,:,a));
     end
     options = optimoptions('quadprog','Algorithm','interior-point-convex','Display','none');
     g = quadprog( 2*M*gamma,-A,[],[],B,C,lb,[],[],options);
